@@ -2,12 +2,22 @@
 
 [![Java 17+](https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
 [![Live IDE Showcase](https://img.shields.io/badge/Live_IDE-GitHub_Pages-0284c7?style=for-the-badge&logo=github)](https://ken-kanike.github.io/java/)
+[![Advance Java Repo](https://img.shields.io/badge/Next_Track-Advance_Java_Repository-7c3aed?style=for-the-badge&logo=github)](https://github.com/Ken-Kanike/AdvanceJava)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
-[![Build: Verified](https://img.shields.io/badge/Build-100%25_Verified-brightgreen?style=for-the-badge)](#)
 
 A comprehensive, production-grade, and beautifully structured Java learning repository. Spanning **88 source programs**, this repository covers foundational syntax, deep Object-Oriented Programming (OOP), the complete **Java Collections Framework (JCF)** masterclass, academic practicals, exam solution banks, and production-grade software systems.
 
-🌐 **Interactive Web IDE & Runner**: Run any code in our live simulated terminal, inspect line-by-line syntax, and explore interactive learning tracks on our [GitHub Pages Portal](https://ken-kanike.github.io/java/).
+🌐 **Interactive Web IDE & Terminal**: Run any code in our live interactive simulated terminal, inspect line-by-line syntax, and explore interactive learning tracks on our [GitHub Pages Portal](https://ken-kanike.github.io/java/).
+
+---
+
+> ### 🚀 Next Step in Learning: [Advance Java Repository](https://github.com/Ken-Kanike/AdvanceJava)
+> Ready for Enterprise & GUI Java? Explore our upcoming companion repository covering:
+> * 🎨 **Java Swing & AWT**: Desktop GUI Application Development.
+> * 🌐 **Java Applets**: Rich web client animations & graphics.
+> * 🗄️ **JDBC (Java Database Connectivity)**: MySQL, PostgreSQL, and SQLite integration.
+> * 🔌 **Socket Networking**: Client-Server TCP/UDP architecture & chat systems.
+> * ⚙️ **Java Servlets & JSP**: Web backends and multi-tier enterprise systems.
 
 ---
 
@@ -21,8 +31,10 @@ flowchart TD
     S4["🟠 Stage 4: Lab Manual Practicals (MANUAL PR)<br/>(Type Casting, Bitwise Shifts, Pattern Printing)"]
     S5["🔴 Stage 5: Practical Exam Question Bank<br/>(Multithreading, Packages, Matrices, Autoboxing)"]
     S6["🏆 Stage 6: Real-World Applications<br/>(ATM Simulation, Full-Stack JavaAMS System)"]
+    S7["⚡ Stage 7: Advance Java Enterprise Track<br/>(Applets, Swing GUI, JDBC Databases, Socket Networking)"]
 
-    S1 --> S2 --> S3 --> S4 --> S5 --> S6
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7
+    click S7 "https://github.com/Ken-Kanike/AdvanceJava" "Explore Advance Java Repository"
 ```
 
 ---
@@ -34,7 +46,8 @@ flowchart TD
 4. [4. Lab Manual Practicals (`MANUAL PR/`)](#4-lab-manual-practicals-manual-pr)
 5. [5. Practical Exam Question Bank (`Practical exam/`)](#5-practical-exam-question-bank-practical-exam)
 6. [6. Real-World Applications & Systems](#6-real-world-applications--systems)
-7. [7. How to Compile & Run](#7-how-to-compile--run)
+7. [7. Advance Java Enterprise Track](#7-advance-java-enterprise-track)
+8. [8. How to Compile & Run](#8-how-to-compile--run)
 
 ---
 
@@ -185,7 +198,18 @@ A lightweight HTTP attendance server with:
 
 ---
 
-## 7. How to Compile & Run
+## 7. Advance Java Enterprise Track
+
+Continue your journey with the companion repository: **[AdvanceJava](https://github.com/Ken-Kanike/AdvanceJava)**
+* 🖼️ **GUI Programming**: Java AWT & Swing component lifecycles, event listeners, and layout managers.
+* 🌐 **Java Applets**: Browser client graphic rendering and animations.
+* 💾 **JDBC & SQL**: Connection pooling, PreparedStatements, transaction management with databases.
+* 📡 **Socket Networking**: Client/Server socket communication, multi-client chat servers.
+* 🏢 **Enterprise Architecture**: Java Servlets, Session handling, and MVC patterns.
+
+---
+
+## 8. How to Compile & Run
 
 ### Prerequisites
 - [JDK 17 or higher](https://www.oracle.com/java/technologies/downloads/) installed.
