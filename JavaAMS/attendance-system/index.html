@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Attendance Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 24px 16px; max-width: 1100px; box-sizing: border-box; margin-left: auto; margin-right: auto; }
+        h1 { margin: 0 0 16px; }
+        h2 { margin: 0 0 12px; font-size: 20px; }
+        form { margin: 8px 0; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        input, button, select { padding: 8px 10px; }
+        input[type="text"], input:not([type]) { min-width: 200px; }
+        pre { background: #f4f4f4; padding: 10px; overflow: auto; margin: 8px 0 0; min-height: 44px; }
+        .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; align-items: start; margin-bottom: 20px; }
+        .card { border: 1px solid #ddd; padding: 14px; border-radius: 8px; background: #fff; box-sizing: border-box; }
+        img { max-width: 280px; display: block; margin-top: 8px; }
+        .muted { color:#666; font-size: 12px; }
+        .actions { display: flex; gap: 8px; align-items: center; }
+        .stack { display: grid; gap: 8px; }
+        .inline { display: inline-flex; gap: 8px; align-items: center; }
+    </style>
+    <script>
+        async function getText(url, options) {
+            const res = await fetch(url, options);
+            const txt = await res.text();
+            if (!res.ok) throw new Error(txt || (res.status+""));
+            return txt;
+        }
+
+        async function listStudents() {
+            const txt = await getText('/students');
+            document.getElementById('studentsOut').textContent = txt || '(none)';
+        }
+        async function addStudent(ev) {
+            ev.preventDefault();
+            const name = ev.target.name.value.trim();
+            if (!name) return;
+            await getText('/students', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: 'name=' + encodeURIComponent(name)});
+            ev.target.reset();
+            listStudents();
+        }
+
+        async function listClasses() {
+            const txt = await getText('/classes');
+            document.getElementById('classesOut').textContent = txt || '(none)';
+        }
+        async function addClass(ev) {
+            ev.preventDefault();
+            const name = ev.target.name.value.trim();
+            if (!name) return;
+            await getText('/classes', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: 'name=' + encodeURIComponent(name)});
+            ev.target.reset();
+            listClasses();
+        }
+
+        async function generateQR(ev) {
+            ev.preventDefault();
+            const cid = ev.target.classId.value.trim();
+            if (!cid) return;
+            const txt = await getText('/generate?classId=' + encodeURIComponent(cid));
+            document.getElementById('generateOut').textContent = txt;
+            // Try to extract QR file name from response
+            const m = txt.match(/QR saved:\s*(.+)\s*/);
+            if (m) {
+                const file = m[1].trim();
+                const img = document.getElementById('qrImg');
+                img.src = '/qr?f=' + encodeURIComponent(file) + '&_=' + Date.now();
+                img.style.display = 'block';
+            }
+        }
+
+        async function markAttendance(ev) {
+            ev.preventDefault();
+            const token = ev.target.token.value.trim();
+            const sid = ev.target.studentId.value.trim();
+            if (!token || !sid) return;
+            const txt = await getText('/mark?token=' + encodeURIComponent(token), {
+                method: 'POST',
+                headers: {'Content-Type':'application/x-www-form-urlencoded'},
+                body: 'studentId=' + encodeURIComponent(sid)
+            });
+            document.getElementById('markOut').innerHTML = txt;
+        }
+
+        async function getAttendance(ev) {
+            ev.preventDefault();
+            const cid = ev.target.classId.value.trim();
+            const date = ev.target.date.value.trim();
+            if (!cid || !date) return;
+            const txt = await getText('/attendance?classId=' + encodeURIComponent(cid) + '&date=' + encodeURIComponent(date));
+            document.getElementById('attendanceOut').textContent = txt || '(none)';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            listStudents();
+            listClasses();
+            document.getElementById('today').value = new Date().toISOString().slice(0,10);
+        });
+    </script>
+    </head>
+<body>
+    <h1>Attendance Management</h1>
+
+    <div class="row">
+        <div class="card">
+            <h2>Students</h2>
+            <form onsubmit="addStudent(event)">
+                <input name="name" placeholder="Student name" />
+                <button type="submit">Add</button>
+            </form>
+            <div class="actions">
+                <button onclick="listStudents()">Refresh</button>
+            </div>
+            <pre id="studentsOut"></pre>
+        </div>
+
+        <div class="card">
+            <h2>Classes</h2>
+            <form onsubmit="addClass(event)">
+                <input name="name" placeholder="Class name" />
+                <button type="submit">Add</button>
+            </form>
+            <div class="actions">
+                <button onclick="listClasses()">Refresh</button>
+            </div>
+            <pre id="classesOut"></pre>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card">
+            <h2>Generate QR (valid 2 min)</h2>
+            <form onsubmit="generateQR(event)">
+                <input name="classId" placeholder="Class ID" />
+                <button type="submit">Generate</button>
+            </form>
+            <pre id="generateOut" class="muted" style="min-height:40px"></pre>
+            <img id="qrImg" alt="QR will appear here" style="display:none" />
+        </div>
+
+        <div class="card">
+            <h2>Mark Attendance</h2>
+            <form onsubmit="markAttendance(event)">
+                <input name="token" placeholder="Token" />
+                <input name="studentId" placeholder="Student ID" />
+                <button type="submit">Mark</button>
+            </form>
+            <div id="markOut" class="muted" style="min-height:24px"></div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 8px;">
+        <h2>Get Attendance</h2>
+        <form onsubmit="getAttendance(event)">
+            <input name="classId" placeholder="Class ID" />
+            <input id="today" name="date" placeholder="YYYY-MM-DD" />
+            <button type="submit">Fetch</button>
+        </form>
+        <pre id="attendanceOut"></pre>
+    </div>
+
+    <p class="muted">Tip: Students can scan the QR which opens /mark?token=... on their device and enter their Student ID.</p>
+</body>
+</html>
+
+
