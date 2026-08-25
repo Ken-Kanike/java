@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java Programming Mastery Hub • Interactive Web IDE & Terminal</title>
+    <title>Java Mastery Hub • Interactive Web IDE & Terminal</title>
     <meta name="description" content="A state-of-the-art interactive Java learning platform featuring 88 source programs, VS Code-like editor, live interactive terminal simulator, and complete curriculum roadmap.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,26 +37,28 @@
             --radius-full: 9999px;
         }
 
-        /* Custom Scrollbars */
-        ::-webkit-scrollbar {
-            width: 7px;
-            height: 7px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
+        /* Universal Clean Scrollbars */
         * {
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 transparent;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        *::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        *::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        *::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        *::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
 
         body {
@@ -222,53 +224,14 @@
             color: var(--text-muted);
         }
 
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            max-width: 1000px;
-            margin: 0 auto 2.5rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 1.25rem;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
-            text-align: center;
-            transition: all 0.2s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--java-blue);
-            box-shadow: var(--shadow-md);
-        }
-
-        .stat-num {
-            font-size: 1.9rem;
-            font-weight: 800;
-            color: var(--java-blue-dark);
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
         /* Advance Java CTA Banner in Hero */
         .advance-cta-banner {
             background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
             border-radius: var(--radius-lg);
             padding: 1.5rem 2rem;
             color: white;
-            max-width: 1000px;
-            margin: 0 auto 3rem;
+            max-width: 1080px;
+            margin: 0 auto 2.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -300,12 +263,14 @@
             padding: 0 1.5rem 5rem;
         }
 
-        /* Sequential Roadmap */
+        /* ==========================================================================
+           RE-ENGINEERED 6-STAGE ROADMAP COMPONENT
+           ========================================================================== */
         .roadmap-container {
             background: white;
             border: 1px solid var(--border-light);
             border-radius: var(--radius-xl);
-            padding: 2rem;
+            padding: 2rem 2.25rem;
             margin-bottom: 2.5rem;
             box-shadow: var(--shadow-sm);
         }
@@ -314,7 +279,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
         }
 
         .roadmap-header h3 {
@@ -323,22 +288,47 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
+            color: var(--text-main);
         }
 
+        .roadmap-header-badge {
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.35rem 0.85rem;
+            background: var(--java-blue-light);
+            color: var(--java-blue-dark);
+            border-radius: var(--radius-full);
+        }
+
+        /* Balanced 3x2 Grid with connecting line feel */
         .roadmap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
         }
 
         .roadmap-card {
             background: var(--bg-base);
             border: 1.5px solid var(--border-light);
-            border-radius: var(--radius-md);
-            padding: 1.25rem;
+            border-radius: var(--radius-lg);
+            padding: 1.35rem;
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .roadmap-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3.5px;
+            background: var(--card-color, var(--java-blue));
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
         }
 
         .roadmap-card:hover {
@@ -354,26 +344,46 @@
             box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
         }
 
-        .track-step {
+        .card-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.6rem;
+        }
+
+        .track-step-pill {
             font-size: 0.7rem;
             font-weight: 800;
             color: var(--card-color, var(--java-blue));
+            background: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-light);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 0.35rem;
+        }
+
+        .track-count-pill {
+            font-size: 0.725rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .track-name {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 0.35rem;
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 0.4rem;
             color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
         .track-desc {
-            font-size: 0.775rem;
+            font-size: 0.825rem;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.45;
         }
 
         /* Control Panel */
@@ -428,6 +438,11 @@
             gap: 0.5rem;
             overflow-x: auto;
             padding-bottom: 0.25rem;
+            scrollbar-width: none; /* Hide scrollbar for tabs */
+            -ms-overflow-style: none;
+        }
+        .tabs-wrapper::-webkit-scrollbar {
+            display: none;
         }
 
         .tab-btn {
@@ -960,13 +975,13 @@
             text-decoration: underline;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .roadmap-grid { grid-template-columns: 1fr; }
             .explorer-sidebar { display: none; }
             .advance-cta-banner { flex-direction: column; align-items: flex-start; }
             .hero h2 { font-size: 2rem; }
             .cards-grid { grid-template-columns: 1fr; }
             .controls-panel { top: 65px; }
-            .roadmap-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1023,32 +1038,12 @@
                 Explore Advance Java →
             </a>
         </div>
-
-        <!-- Stats -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-num">88</div>
-                <div class="stat-label">Total Programs</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num">15</div>
-                <div class="stat-label">Collections Masterclass</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num">6</div>
-                <div class="stat-label">Sequential Tracks</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num">100%</div>
-                <div class="stat-label">Interactive Terminal</div>
-            </div>
-        </div>
     </section>
 
     <!-- Main Content Area -->
     <main class="main-container">
 
-        <!-- Sequential Learning Roadmap -->
+        <!-- 6-Stage Balanced Roadmap Component -->
         <section id="roadmap" class="roadmap-container">
             <div class="roadmap-header">
                 <h3>
@@ -1059,38 +1054,82 @@
                     </svg>
                     Sequential Java Learning Track
                 </h3>
+                <span class="roadmap-header-badge">6 Progressive Stages • 88 Modules</span>
             </div>
             <div class="roadmap-grid">
+                
+                <!-- Stage 1 -->
                 <div class="roadmap-card" style="--card-color: #0284c7;" onclick="filterCategory('foundations')">
-                    <div class="track-step">Stage 1</div>
-                    <div class="track-name">Foundations 101</div>
-                    <div class="track-desc">Data types, Scanner, BufferedReader, operators, Math API, loops & conditions.</div>
+                    <div class="card-top-row">
+                        <span class="track-step-pill">Stage 01</span>
+                        <span class="track-count-pill">25 Programs</span>
+                    </div>
+                    <div>
+                        <div class="track-name">🌱 Foundations 101</div>
+                        <div class="track-desc">Data types, Scanner, BufferedReader, operators, Math API, loops & conditions.</div>
+                    </div>
                 </div>
+
+                <!-- Stage 2 -->
                 <div class="roadmap-card" style="--card-color: #2563eb;" onclick="filterCategory('oop')">
-                    <div class="track-step">Stage 2</div>
-                    <div class="track-name">OOP Architecture</div>
-                    <div class="track-desc">Classes, constructors, inheritance, polymorphism, overriding, and abstraction.</div>
+                    <div class="card-top-row">
+                        <span class="track-step-pill">Stage 02</span>
+                        <span class="track-count-pill">13 Programs</span>
+                    </div>
+                    <div>
+                        <div class="track-name">🏛️ OOP Architecture</div>
+                        <div class="track-desc">Classes, constructors, inheritance, polymorphism, overriding, and abstraction.</div>
+                    </div>
                 </div>
+
+                <!-- Stage 3 -->
                 <div class="roadmap-card" style="--card-color: #7c3aed;" onclick="filterCategory('collections')">
-                    <div class="track-step">Stage 3</div>
-                    <div class="track-name">Collections & Streams</div>
-                    <div class="track-desc">ArrayList, LinkedList, Set, Map, TreeNodes, Heaps, Deques, and Java 8 Streams.</div>
+                    <div class="card-top-row">
+                        <span class="track-step-pill">Stage 03</span>
+                        <span class="track-count-pill">15 Modules</span>
+                    </div>
+                    <div>
+                        <div class="track-name">⚡ Collections & Streams</div>
+                        <div class="track-desc">ArrayList, LinkedList, Set, Map, TreeNodes, Heaps, Deques, and Java 8 Streams.</div>
+                    </div>
                 </div>
+
+                <!-- Stage 4 -->
                 <div class="roadmap-card" style="--card-color: #ea580c;" onclick="filterCategory('manual')">
-                    <div class="track-step">Stage 4</div>
-                    <div class="track-name">Lab Practicals</div>
-                    <div class="track-desc">Academic manual practicals, type casting, bitwise operations & pattern logic.</div>
+                    <div class="card-top-row">
+                        <span class="track-step-pill">Stage 04</span>
+                        <span class="track-count-pill">8 Practicals</span>
+                    </div>
+                    <div>
+                        <div class="track-name">🧪 Lab Practicals</div>
+                        <div class="track-desc">Academic manual practicals, type casting, bitwise operations & pattern logic.</div>
+                    </div>
                 </div>
+
+                <!-- Stage 5 -->
                 <div class="roadmap-card" style="--card-color: #dc2626;" onclick="filterCategory('exam')">
-                    <div class="track-step">Stage 5</div>
-                    <div class="track-name">Exam Question Bank</div>
-                    <div class="track-desc">Packages, multithreading, custom exceptions, wrappers, matrices, and Applets.</div>
+                    <div class="card-top-row">
+                        <span class="track-step-pill">Stage 05</span>
+                        <span class="track-count-pill">23 Programs</span>
+                    </div>
+                    <div>
+                        <div class="track-name">📝 Exam Question Bank</div>
+                        <div class="track-desc">Packages, multithreading, custom exceptions, wrappers, matrices, and Applets.</div>
+                    </div>
                 </div>
+
+                <!-- Stage 6 -->
                 <div class="roadmap-card" style="--card-color: #059669;" onclick="filterCategory('projects')">
-                    <div class="track-step">Stage 6</div>
-                    <div class="track-name">Real-World Projects</div>
-                    <div class="track-desc">Console ATM banking system & full-stack JavaAMS Attendance Management.</div>
+                    <div class="card-top-row">
+                        <span class="track-step-pill">Stage 06</span>
+                        <span class="track-count-pill">4 Systems</span>
+                    </div>
+                    <div>
+                        <div class="track-name">🏆 Real-World Projects</div>
+                        <div class="track-desc">Console ATM banking system & full-stack JavaAMS Attendance Management.</div>
+                    </div>
                 </div>
+
             </div>
         </section>
 
@@ -1127,7 +1166,7 @@
 
         <!-- Cards Grid -->
         <div class="cards-grid" id="cardsGrid">
-            <!-- Dynamic Injection -->
+            <!-- Dynamic Injection by JS -->
         </div>
 
     </main>
@@ -1296,14 +1335,11 @@
 
             let html = '';
             for (let title in groups) {
-                html += `<div class="tree-folder">📁 ${title}</div>`;
+                html += '<div class="tree-folder">📁 ' + title + '</div>';
                 groups[title].forEach(f => {
                     const isActive = (activeItem && activeItem.path === f.path) ? 'active' : '';
-                    html += `
-                        <div class="tree-file ${isActive}" onclick="openCodeModal('${f.path.replace(/'/g, "\\'")}')">
-                            <span>☕</span> <span>${f.filename}</span>
-                        </div>
-                    `;
+                    const escaped = f.path.replace(/'/g, "\\'");
+                    html += '<div class="tree-file ' + isActive + '" onclick="openCodeModal(\'' + escaped + '\')"><span>☕</span> <span>' + f.filename + '</span></div>';
                 });
             }
             container.innerHTML = html;
@@ -1323,48 +1359,41 @@
             });
 
             if (filtered.length === 0) {
-                grid.innerHTML = `
-                    <div class="empty-state">
-                        <h4>No Matching Java Programs Found</h4>
-                        <p>Try searching for a different keyword like "ArrayList", "Inheritance", "Scanner", or "ATM".</p>
-                    </div>
-                `;
+                grid.innerHTML = '<div class="empty-state"><h4>No Matching Java Programs Found</h4><p>Try searching for a different keyword like "ArrayList", "Inheritance", "Scanner", or "ATM".</p></div>';
                 return;
             }
 
             grid.innerHTML = filtered.map(item => {
-                const escapedPath = item.path.replace(/'/g, "\'");
-                return `
-                    <div class="code-card" style="--card-accent: ${item.color}">
-                        <div>
-                            <div class="card-header">
-                                <span class="card-badge" style="--badge-bg: ${item.color}15; --badge-color: ${item.color};">
-                                    ${item.icon} ${item.badge}
-                                </span>
-                                <span class="card-lines">${item.lines} lines</span>
-                            </div>
-                            <div class="card-title">${item.filename}</div>
-                            <div class="card-desc">${item.description}</div>
-                        </div>
-                        <div class="card-footer">
-                            <span class="card-path" title="${item.path}">${item.path}</span>
-                            <button class="card-action-btn" onclick="openCodeModal('${escapedPath}')">
-                                <span>📄</span> View & Run
-                            </button>
-                        </div>
-                    </div>
-                `;
+                const escapedPath = item.path.replace(/'/g, "\\'");
+                return '<div class="code-card" style="--card-accent: ' + item.color + '">' +
+                    '<div>' +
+                        '<div class="card-header">' +
+                            '<span class="card-badge" style="--badge-bg: ' + item.color + '15; --badge-color: ' + item.color + ';">' +
+                                item.icon + ' ' + item.badge +
+                            '</span>' +
+                            '<span class="card-lines">' + item.lines + ' lines</span>' +
+                        '</div>' +
+                        '<div class="card-title">' + item.filename + '</div>' +
+                        '<div class="card-desc">' + item.description + '</div>' +
+                    '</div>' +
+                    '<div class="card-footer">' +
+                        '<span class="card-path" title="' + item.path + '">' + item.path + '</span>' +
+                        '<button class="card-action-btn" onclick="openCodeModal(\'' + escapedPath + '\')">' +
+                            '<span>📄</span> View & Run' +
+                        '</button>' +
+                    '</div>' +
+                '</div>';
             }).join('');
         }
 
         function filterCategory(cat) {
             currentCategory = cat;
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(cat));
+            const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes("'" + cat + "'"));
             if (targetBtn) targetBtn.classList.add('active');
 
             document.querySelectorAll('.roadmap-card').forEach(c => c.classList.remove('active'));
-            const targetRoadmap = Array.from(document.querySelectorAll('.roadmap-card')).find(c => c.getAttribute('onclick').includes(cat));
+            const targetRoadmap = Array.from(document.querySelectorAll('.roadmap-card')).find(c => c.getAttribute('onclick').includes("'" + cat + "'"));
             if (targetRoadmap) targetRoadmap.classList.add('active');
 
             renderCards();
@@ -1382,39 +1411,35 @@
             interactiveSession = null;
 
             document.getElementById('modalTabName').textContent = item.filename;
-            document.getElementById('modalBreadcrumb').textContent = `java > src > ${item.path}`;
-            document.getElementById('statusLineCount').textContent = `Ln ${item.lines}, Col 1`;
+            document.getElementById('modalBreadcrumb').textContent = 'java > src > ' + item.path;
+            document.getElementById('statusLineCount').textContent = 'Ln ' + item.lines + ', Col 1';
 
             document.getElementById('modalGitHubLink').href = 
-                `https://github.com/Ken-Kanike/java/blob/main/${encodeURIComponent(item.path)}`;
+                'https://github.com/Ken-Kanike/java/blob/main/' + encodeURIComponent(item.path);
 
-            // Reset Code Container safely without breaking line-numbers plugin
+            // Create clean code element
             const container = document.getElementById('codeViewContainer');
+            container.innerHTML = '';
             const pre = document.createElement('pre');
             pre.className = 'language-java';
             const code = document.createElement('code');
             code.className = 'language-java';
             code.textContent = item.code;
             pre.appendChild(code);
-            container.innerHTML = '';
             container.appendChild(pre);
 
             try {
                 Prism.highlightElement(code);
             } catch (err) {
-                console.warn('Prism highlight error:', err);
+                console.warn('Prism error:', err);
             }
 
             buildExplorerTree();
 
-            // Setup Terminal Welcome
             const term = document.getElementById('terminalLog');
-            const className = item.filename.replace('.java', '');
-            term.innerHTML = `
-                <div style="color: #4ec9b0;">💻 Java Virtual Machine Ready (OpenJDK 21.0.2 LTS)</div>
-                <div style="color: #858585;">Loaded file: <span style="color: #9cdcfe;">${item.path}</span> (${item.lines} lines)</div>
-                <div style="color: #ce9178; margin: 0.35rem 0;">Type <strong style="color: #4ec9b0;">run</strong> or click <strong style="color: #4ec9b0;">▶ Run Code</strong> to compile and execute. Type <strong style="color: #4ec9b0;">help</strong> for commands.</div>
-            `;
+            term.innerHTML = '<div style="color: #4ec9b0;">💻 Java Virtual Machine Ready (OpenJDK 21.0.2 LTS)</div>' +
+                '<div style="color: #858585;">Loaded file: <span style="color: #9cdcfe;">' + item.path + '</span> (' + item.lines + ' lines)</div>' +
+                '<div style="color: #ce9178; margin: 0.35rem 0;">Type <strong style="color: #4ec9b0;">run</strong> or click <strong style="color: #4ec9b0;">▶ Run Code</strong> to compile and execute. Type <strong style="color: #4ec9b0;">help</strong> for commands.</div>';
 
             document.getElementById('codeModal').classList.add('open');
             document.body.style.overflow = 'hidden';
@@ -1433,46 +1458,25 @@
             const term = document.getElementById('terminalLog');
             const className = activeItem.filename.replace('.java', '');
 
-            term.innerHTML += `
-                <div style="color: #38bdf8; margin-top: 0.5rem;">$ javac "${activeItem.path}" && java "${className}"</div>
-                <div style="color: #858585;">[1/2] ⚙️ Compiling Java source to bytecode...</div>
-                <div style="color: #858585;">[2/2] 🚀 Initializing Java Virtual Machine...</div>
-            `;
+            term.innerHTML += '<div style="color: #38bdf8; margin-top: 0.5rem;">$ javac "' + activeItem.path + '" && java "' + className + '"</div>' +
+                '<div style="color: #858585;">[1/2] ⚙️ Compiling Java source to bytecode...</div>' +
+                '<div style="color: #858585;">[2/2] 🚀 Initializing Java Virtual Machine...</div>';
 
-            // Interactive simulation handlers
             if (activeItem.filename === 'ATM.java') {
-                interactiveSession = {
-                    program: 'ATM',
-                    step: 'PIN',
-                    user: null,
-                    balance: 500.00
-                };
-                term.innerHTML += `
-                    <div style="color: #f1f5f9; margin-top: 0.4rem;">========================================================</div>
-                    <div style="color: #f1f5f9;">                   BANK ATM SERVICES                    </div>
-                    <div style="color: #f1f5f9;">========================================================</div>
-                    <div style="color: #eab308;">Please insert your ATM card.</div>
-                    <div style="color: #38bdf8;">Enter 4-Digit PIN (Available: 1001 [Alice], 1002 [Bob], 1003 [Charlie], 1004 [David]):</div>
-                `;
+                interactiveSession = { program: 'ATM', step: 'PIN', user: null, balance: 500.00 };
+                term.innerHTML += '<div style="color: #f1f5f9; margin-top: 0.4rem;">========================================================</div>' +
+                    '<div style="color: #f1f5f9;">                   BANK ATM SERVICES                    </div>' +
+                    '<div style="color: #f1f5f9;">========================================================</div>' +
+                    '<div style="color: #eab308;">Please insert your ATM card.</div>' +
+                    '<div style="color: #38bdf8;">Enter 4-Digit PIN (Available: 1001 [Alice], 1002 [Bob], 1003 [Charlie], 1004 [David]):</div>';
             } else if (activeItem.filename === 'tute20.java') {
-                interactiveSession = {
-                    program: 'CALC',
-                    step: 'CHOICE'
-                };
-                term.innerHTML += `
-                    <div style="color: #f1f5f9; margin-top: 0.4rem;">-------- SIMPLE CALCULATOR MENU --------</div>
-                    <div>1] Add  2] Subtract  3] Multiply  4] Divide</div>
-                    <div style="color: #38bdf8;">Enter Choice (1-4):</div>
-                `;
+                interactiveSession = { program: 'CALC', step: 'CHOICE' };
+                term.innerHTML += '<div style="color: #f1f5f9; margin-top: 0.4rem;">-------- SIMPLE CALCULATOR MENU --------</div>' +
+                    '<div>1] Add  2] Subtract  3] Multiply  4] Divide</div>' +
+                    '<div style="color: #38bdf8;">Enter Choice (1-4):</div>';
             } else {
-                // Standard program output
-                const lines = activeItem.description;
-                term.innerHTML += `
-                    <div style="color: #ffffff; white-space: pre-wrap; margin: 0.5rem 0;">${activeItem.code.includes('System.out.println') ? 'Executing program output:
---------------------------------------------------
-' + activeItem.filename + ' output executed cleanly.' : 'Execution completed.'}</div>
-                    <div style="color: #4ec9b0; border-top: 1px dashed #333333; padding-top: 0.35rem;">✔ Process finished with exit code 0 in 0.04s</div>
-                `;
+                term.innerHTML += '<div style="color: #ffffff; white-space: pre-wrap; margin: 0.5rem 0;">' + activeItem.filename + ' output executed cleanly.</div>' +
+                    '<div style="color: #4ec9b0; border-top: 1px dashed #333333; padding-top: 0.35rem;">✔ Process finished with exit code 0 in 0.04s</div>';
             }
             term.scrollTop = term.scrollHeight;
         }
@@ -1489,16 +1493,14 @@
                 historyIndex = commandHistory.length;
 
                 const term = document.getElementById('terminalLog');
-                term.innerHTML += `<div style="color: #9cdcfe;">user@java-runner:~$ ${rawVal}</div>`;
+                term.innerHTML += '<div style="color: #9cdcfe;">user@java-runner:~$ ' + rawVal + '</div>';
 
-                // Handle Interactive Session Input
                 if (interactiveSession) {
                     handleInteractiveInput(cmd);
                     term.scrollTop = term.scrollHeight;
                     return;
                 }
 
-                // Shell Commands
                 const parts = cmd.split(' ');
                 const action = parts[0].toLowerCase();
 
@@ -1513,38 +1515,35 @@
                         break;
                     case 'ls':
                     case 'dir':
-                        term.innerHTML += `<div style="color: #4ec9b0;">01_DataTypes_And_Variables.java  ATM.java  CollectionFramework/  MANUAL PR/  Practical exam/  README.md</div>`;
+                        term.innerHTML += '<div style="color: #4ec9b0;">01_DataTypes_And_Variables.java  ATM.java  CollectionFramework/  MANUAL PR/  Practical exam/  README.md</div>';
                         break;
                     case 'pwd':
-                        term.innerHTML += `<div>/workspace/java</div>`;
+                        term.innerHTML += '<div>/workspace/java</div>';
                         break;
                     case 'whoami':
-                        term.innerHTML += `<div style="color: #ce9178;">java-engineer (OpenJDK 21 Developer)</div>`;
+                        term.innerHTML += '<div style="color: #ce9178;">java-engineer (OpenJDK 21 Developer)</div>';
                         break;
                     case 'version':
                     case 'java':
                         if (parts[1] === '-version' || parts[1] === '--version' || !parts[1]) {
-                            term.innerHTML += `<div>openjdk version "21.0.2" 2024-01-16 LTS<br>OpenJDK Runtime Environment (build 21.0.2+13-58)<br>OpenJDK 64-Bit Server VM (build 21.0.2+13-58, mixed mode)</div>`;
+                            term.innerHTML += '<div>openjdk version "21.0.2" 2024-01-16 LTS<br>OpenJDK Runtime Environment (build 21.0.2+13-58)<br>OpenJDK 64-Bit Server VM (build 21.0.2+13-58, mixed mode)</div>';
                         } else {
                             executeProgram();
                         }
                         break;
                     case 'help':
-                        term.innerHTML += `
-                            <div style="color: #dcdcaa;">Available Terminal Commands:</div>
-                            <div> • <span style="color: #4ec9b0;">run</span> - Compile and execute current Java file</div>
-                            <div> • <span style="color: #4ec9b0;">clear</span> - Clear terminal output buffer</div>
-                            <div> • <span style="color: #4ec9b0;">ls</span> - List files in current directory</div>
-                            <div> • <span style="color: #4ec9b0;">pwd</span> - Print working directory</div>
-                            <div> • <span style="color: #4ec9b0;">cat [file]</span> - View file content</div>
-                            <div> • <span style="color: #4ec9b0;">exit</span> - Close current IDE window</div>
-                        `;
+                        term.innerHTML += '<div style="color: #dcdcaa;">Available Terminal Commands:</div>' +
+                            '<div> • <span style="color: #4ec9b0;">run</span> - Compile and execute current Java file</div>' +
+                            '<div> • <span style="color: #4ec9b0;">clear</span> - Clear terminal output buffer</div>' +
+                            '<div> • <span style="color: #4ec9b0;">ls</span> - List files in current directory</div>' +
+                            '<div> • <span style="color: #4ec9b0;">pwd</span> - Print working directory</div>' +
+                            '<div> • <span style="color: #4ec9b0;">exit</span> - Close current IDE window</div>';
                         break;
                     case 'exit':
                         closeModal();
                         break;
                     default:
-                        term.innerHTML += `<div style="color: #f87171;">Command not found: ${cmd}. Type 'help' for available commands.</div>`;
+                        term.innerHTML += '<div style="color: #f87171;">Command not found: ' + cmd + '. Type \'help\' for available commands.</div>';
                 }
                 term.scrollTop = term.scrollHeight;
             } else if (event.key === 'ArrowUp') {
@@ -1571,75 +1570,63 @@
                     if (pinMap[cmd]) {
                         interactiveSession.user = pinMap[cmd];
                         interactiveSession.step = 'MENU';
-                        term.innerHTML += `
-                            <div style="color: #4ec9b0;">✔ PIN Verified! Welcome, ${interactiveSession.user}!</div>
-                            <div style="margin: 0.35rem 0;">----------------------- ATM MENU -----------------------</div>
-                            <div>1] Check Balance   2] Deposit Cash   3] Withdraw Cash   4] Exit</div>
-                            <div style="color: #38bdf8;">Enter Menu Choice (1-4):</div>
-                        `;
+                        term.innerHTML += '<div style="color: #4ec9b0;">✔ PIN Verified! Welcome, ' + interactiveSession.user + '!</div>' +
+                            '<div style="margin: 0.35rem 0;">----------------------- ATM MENU -----------------------</div>' +
+                            '<div>1] Check Balance   2] Deposit Cash   3] Withdraw Cash   4] Exit</div>' +
+                            '<div style="color: #38bdf8;">Enter Menu Choice (1-4):</div>';
                     } else {
-                        term.innerHTML += `<div style="color: #f87171;">❌ Invalid PIN! Try 1001, 1002, 1003, or 1004:</div>`;
+                        term.innerHTML += '<div style="color: #f87171;">❌ Invalid PIN! Try 1001, 1002, 1003, or 1004:</div>';
                     }
                 } else if (interactiveSession.step === 'MENU') {
                     if (cmd === '1') {
-                        term.innerHTML += `
-                            <div style="color: #4ec9b0;">💰 Current Account Balance: $${interactiveSession.balance.toFixed(2)}</div>
-                            <div style="color: #38bdf8; margin-top: 0.35rem;">Enter Menu Choice (1-4):</div>
-                        `;
+                        term.innerHTML += '<div style="color: #4ec9b0;">💰 Current Account Balance: $' + interactiveSession.balance.toFixed(2) + '</div>' +
+                            '<div style="color: #38bdf8; margin-top: 0.35rem;">Enter Menu Choice (1-4):</div>';
                     } else if (cmd === '2') {
                         interactiveSession.step = 'DEPOSIT';
-                        term.innerHTML += `<div style="color: #38bdf8;">Enter Deposit Amount ($):</div>`;
+                        term.innerHTML += '<div style="color: #38bdf8;">Enter Deposit Amount ($):</div>';
                     } else if (cmd === '3') {
                         interactiveSession.step = 'WITHDRAW';
-                        term.innerHTML += `<div style="color: #38bdf8;">Enter Withdrawal Amount ($):</div>`;
+                        term.innerHTML += '<div style="color: #38bdf8;">Enter Withdrawal Amount ($):</div>';
                     } else if (cmd === '4') {
-                        term.innerHTML += `
-                            <div style="color: #eab308;">============== Thank You For Visiting Java Bank! ==============</div>
-                            <div style="color: #4ec9b0;">✔ Session ended cleanly.</div>
-                        `;
+                        term.innerHTML += '<div style="color: #eab308;">============== Thank You For Visiting Java Bank! ==============</div>' +
+                            '<div style="color: #4ec9b0;">✔ Session ended cleanly.</div>';
                         interactiveSession = null;
                     } else {
-                        term.innerHTML += `<div style="color: #f87171;">Invalid choice. Enter 1 to 4:</div>`;
+                        term.innerHTML += '<div style="color: #f87171;">Invalid choice. Enter 1 to 4:</div>';
                     }
                 } else if (interactiveSession.step === 'DEPOSIT') {
                     const amt = parseFloat(cmd);
                     if (amt > 0) {
                         interactiveSession.balance += amt;
                         interactiveSession.step = 'MENU';
-                        term.innerHTML += `
-                            <div style="color: #4ec9b0;">✔ Successfully deposited $${amt.toFixed(2)}. New Balance: $${interactiveSession.balance.toFixed(2)}</div>
-                            <div style="color: #38bdf8; margin-top: 0.35rem;">Enter Menu Choice (1-4):</div>
-                        `;
+                        term.innerHTML += '<div style="color: #4ec9b0;">✔ Successfully deposited $' + amt.toFixed(2) + '. New Balance: $' + interactiveSession.balance.toFixed(2) + '</div>' +
+                            '<div style="color: #38bdf8; margin-top: 0.35rem;">Enter Menu Choice (1-4):</div>';
                     } else {
-                        term.innerHTML += `<div style="color: #f87171;">Enter a valid positive deposit amount:</div>`;
+                        term.innerHTML += '<div style="color: #f87171;">Enter a valid positive deposit amount:</div>';
                     }
                 } else if (interactiveSession.step === 'WITHDRAW') {
                     const amt = parseFloat(cmd);
                     if (amt > 0 && amt <= interactiveSession.balance) {
                         interactiveSession.balance -= amt;
                         interactiveSession.step = 'MENU';
-                        term.innerHTML += `
-                            <div style="color: #4ec9b0;">✔ Please take your cash: $${amt.toFixed(2)}. Remaining Balance: $${interactiveSession.balance.toFixed(2)}</div>
-                            <div style="color: #38bdf8; margin-top: 0.35rem;">Enter Menu Choice (1-4):</div>
-                        `;
+                        term.innerHTML += '<div style="color: #4ec9b0;">✔ Please take your cash: $' + amt.toFixed(2) + '. Remaining Balance: $' + interactiveSession.balance.toFixed(2) + '</div>' +
+                            '<div style="color: #38bdf8; margin-top: 0.35rem;">Enter Menu Choice (1-4):</div>';
                     } else {
-                        term.innerHTML += `<div style="color: #f87171;">Insufficient balance or invalid amount! Current: $${interactiveSession.balance.toFixed(2)}. Try again:</div>`;
+                        term.innerHTML += '<div style="color: #f87171;">Insufficient balance or invalid amount! Current: $' + interactiveSession.balance.toFixed(2) + '. Try again:</div>';
                     }
                 }
             } else if (interactiveSession.program === 'CALC') {
-                if (cmd === '1') term.innerHTML += `<div style="color: #4ec9b0;">Selected Add: 10 + 20 = 30</div>`;
-                else if (cmd === '2') term.innerHTML += `<div style="color: #4ec9b0;">Selected Subtract: 50 - 15 = 35</div>`;
-                else if (cmd === '3') term.innerHTML += `<div style="color: #4ec9b0;">Selected Multiply: 6 * 7 = 42</div>`;
-                else if (cmd === '4') term.innerHTML += `<div style="color: #4ec9b0;">Selected Divide: 100 / 4 = 25</div>`;
-                else term.innerHTML += `<div style="color: #f87171;">Invalid choice.</div>`;
+                if (cmd === '1') term.innerHTML += '<div style="color: #4ec9b0;">Selected Add: 10 + 20 = 30</div>';
+                else if (cmd === '2') term.innerHTML += '<div style="color: #4ec9b0;">Selected Subtract: 50 - 15 = 35</div>';
+                else if (cmd === '3') term.innerHTML += '<div style="color: #4ec9b0;">Selected Multiply: 6 * 7 = 42</div>';
+                else if (cmd === '4') term.innerHTML += '<div style="color: #4ec9b0;">Selected Divide: 100 / 4 = 25</div>';
+                else term.innerHTML += '<div style="color: #f87171;">Invalid choice.</div>';
                 interactiveSession = null;
             }
         }
 
         function clearTerminalScreen() {
-            document.getElementById('terminalLog').innerHTML = `
-                <div style="color: #858585;">Terminal cleared. Type <strong style="color: #4ec9b0;">run</strong> to execute.</div>
-            `;
+            document.getElementById('terminalLog').innerHTML = '<div style="color: #858585;">Terminal cleared. Type <strong style="color: #4ec9b0;">run</strong> to execute.</div>';
             interactiveSession = null;
         }
 
