@@ -1,13 +1,13 @@
 # ☕ Java Programming Mastery: From Foundations to Architecture
 
 [![Java 17+](https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
-[![GitHub Pages](https://img.shields.io/badge/Live_Showcase-GitHub_Pages-0284c7?style=for-the-badge&logo=github)](https://ken-kanike.github.io/java/)
+[![Live IDE Showcase](https://img.shields.io/badge/Live_IDE-GitHub_Pages-0284c7?style=for-the-badge&logo=github)](https://ken-kanike.github.io/java/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![Build: Verified](https://img.shields.io/badge/Build-100%25_Verified-brightgreen?style=for-the-badge)](#)
 
-A comprehensive, production-grade, and beautifully structured Java learning repository. Spanning **80+ source programs**, this repository covers foundational syntax, deep Object-Oriented Programming (OOP), the complete **Java Collections Framework (JCF)** masterclass, academic practicals, exam solution banks, and production-grade software systems.
+A comprehensive, production-grade, and beautifully structured Java learning repository. Spanning **88 source programs**, this repository covers foundational syntax, deep Object-Oriented Programming (OOP), the complete **Java Collections Framework (JCF)** masterclass, academic practicals, exam solution banks, and production-grade software systems.
 
-🌐 **Interactive Web Portal**: Explore all 80+ programs, copy code, and view live interactive roadmaps on our [GitHub Pages Showcase](https://ken-kanike.github.io/java/).
+🌐 **Interactive Web IDE & Runner**: Run any code in our live simulated terminal, inspect line-by-line syntax, and explore interactive learning tracks on our [GitHub Pages Portal](https://ken-kanike.github.io/java/).
 
 ---
 
@@ -15,11 +15,11 @@ A comprehensive, production-grade, and beautifully structured Java learning repo
 
 ```mermaid
 flowchart TD
-    S1["🟢 Stage 1: Basic Java & Syntax<br/>(I/O, Scanner, Loops, Conditionals, Math API)"]
-    S2["🔵 Stage 2: Object-Oriented Programming (OOP)<br/>(Classes, Inheritance, Polymorphism, Abstraction)"]
-    S3["🟣 Stage 3: Collections & Streams Masterclass<br/>(Lists, Sets, Maps, Queues, Heaps, Deques, Streams)"]
-    S4["🟠 Stage 4: Lab Manual Practicals (MANUAL PR)<br/>(Casting, Bitwise Shifts, Pattern Algorithms)"]
-    S5["🔴 Stage 5: Practical Exam Question Bank<br/>(Multithreading, Packages, Matrices, Exceptions)"]
+    S1["🟢 Stage 1: Java Foundations 101<br/>(Data Types, Operators, Conditionals, Loops, Arrays, Strings, Methods, Exceptions)"]
+    S2["🔵 Stage 2: Object-Oriented Programming (OOP)<br/>(Classes, Constructors, Inheritance, Polymorphism, Abstraction)"]
+    S3["🟣 Stage 3: Collections & Streams Masterclass<br/>(Lists, Sets, Maps, Queues, Heaps, Deques, Concurrent Collections, Streams)"]
+    S4["🟠 Stage 4: Lab Manual Practicals (MANUAL PR)<br/>(Type Casting, Bitwise Shifts, Pattern Printing)"]
+    S5["🔴 Stage 5: Practical Exam Question Bank<br/>(Multithreading, Packages, Matrices, Autoboxing)"]
     S6["🏆 Stage 6: Real-World Applications<br/>(ATM Simulation, Full-Stack JavaAMS System)"]
 
     S1 --> S2 --> S3 --> S4 --> S5 --> S6
@@ -28,7 +28,7 @@ flowchart TD
 ---
 
 ## 📑 Table of Contents
-1. [1. Basic Java & Core Syntax](#1-basic-java--core-syntax)
+1. [1. Java Foundations 101](#1-java-foundations-101)
 2. [2. Core Object-Oriented Programming (OOP)](#2-core-object-oriented-programming-oop)
 3. [3. Java Collections Framework Masterclass](#3-java-collections-framework-masterclass)
 4. [4. Lab Manual Practicals (`MANUAL PR/`)](#4-lab-manual-practicals-manual-pr)
@@ -38,29 +38,37 @@ flowchart TD
 
 ---
 
-## 1. Basic Java & Core Syntax
+## 1. Java Foundations 101
 
-Mastering the building blocks of Java: input/output handling, control structures, operators, loops, string buffers, and standard library utilities.
+Mastering the foundational building blocks of Java: data types, operators, modern switch expressions, loops, array manipulations, string pool internals, methods, and exception handling.
 
 | Program | Topics & Concepts | Key Highlights |
 | :--- | :--- | :--- |
-| [`HelloWorld.java`](HelloWorld.java) | Program Entrypoint & Arguments | `main(String[] args)`, JVM execution model, console output. |
-| [`print.java`](print.java) | Output Streams | `System.out.print` vs `System.out.println`, newline escape sequences. |
-| [`incr_dcr_opr.java`](incr_dcr_opr.java) | Arithmetic Operators | Prefix vs postfix increment (`++a`, `a++`) and decrement evaluations. |
-| [`MathFunctions.java`](MathFunctions.java) | Java `Math` Standard Library | `Math.sqrt()`, `pow()`, `abs()`, `ceil()`, `floor()`, `min()`, `max()`. |
-| [`Table.java`](Table.java) | Loops & Iteration | Multiplication table calculation using standard `for` loop. |
-| [`ContinueStatement.java`](ContinueStatement.java) | Loop Control Flow | Skipping loop iterations using the `continue` keyword. |
+| [`01_DataTypes_And_Variables.java`](01_DataTypes_And_Variables.java) | Data Types & Memory | 8 Primitives, ranges, memory sizes in bits, binary/octal/hex literals. |
+| [`02_Operators_And_Precedence.java`](02_Operators_And_Precedence.java) | Operators & Precedence | Short-circuit logical (`&&`), bitwise shifts (`<<`, `>>`, `>>>`), ternary operator. |
+| [`03_Control_Statements_Conditionals.java`](03_Control_Statements_Conditionals.java) | Decision Making | If-else-if ladders, nested if, modern Java switch with `->` and `yield`. |
+| [`04_Loops_And_Iteration.java`](04_Loops_And_Iteration.java) | Loop Control Flow | For, while, do-while, labeled `break` and `continue` across 2D matrices. |
+| [`05_Arrays_1D_and_2D.java`](05_Arrays_1D_and_2D.java) | Arrays & Matrices | 1D arrays, 2D rectangular matrices, jagged arrays, `java.util.Arrays` utilities. |
+| [`06_Strings_And_StringBuilder.java`](06_Strings_And_StringBuilder.java) | String Internals | String Constant Pool (SCP), immutability, `==` vs `.equals()`, `StringBuilder`. |
+| [`07_Methods_And_Recursion.java`](07_Methods_And_Recursion.java) | Methods & Recursion | Strict pass-by-value semantics, varargs (`...`), recursive Factorial & Fibonacci. |
+| [`08_Exception_Handling_DeepDive.java`](08_Exception_Handling_DeepDive.java) | Exception Handling | Multi-catch, `finally`, `AutoCloseable` try-with-resources, custom checked exceptions. |
+| [`HelloWorld.java`](HelloWorld.java) | Program Structure | `public static void main(String[] args)`, JVM execution model. |
+| [`print.java`](print.java) | Output Streams | `print` vs `println`, formatted printing, and escape sequences. |
+| [`incr_dcr_opr.java`](incr_dcr_opr.java) | Increment / Decrement | Unary prefix (`++a`) vs postfix (`a++`) evaluations. |
+| [`MathFunctions.java`](MathFunctions.java) | Java `Math` Library | `Math.sqrt()`, `pow()`, `abs()`, `ceil()`, `floor()`, `min()`, `max()`. |
+| [`Table.java`](Table.java) | Loops & Math | Multiplication table calculation using standard `for` loop. |
+| [`ContinueStatement.java`](ContinueStatement.java) | Loop Branching | Skipping loop iterations using the `continue` keyword. |
 | [`foreach.java`](foreach.java) | Enhanced For-Loop | Modern array traversal using enhanced `for (Type var : array)` syntax. |
-| [`StringBufferExample.java`](StringBufferExample.java) | String Mutability | Performance and buffer methods: `append()`, `insert()`, `replace()`, `delete()`. |
-| [`tute14.java`](tute14.java) | Fast Input Streams | User input with `BufferedReader` and `InputStreamReader`. |
-| [`tute15.java`](tute15.java) | Interactive Keyboard Input | Input parsing (`nextInt()`, `next()`, `nextLine()`) via `java.util.Scanner`. |
+| [`StringBufferExample.java`](StringBufferExample.java) | String Buffers | Mutable buffer methods: `append()`, `insert()`, `replace()`, `delete()`. |
+| [`tute14.java`](tute14.java) | Stream Input | User input capture with `BufferedReader` and `InputStreamReader`. |
+| [`tute15.java`](tute15.java) | Scanner Input | Multi-type keyboard input parsing with `java.util.Scanner`. |
 | [`tute16.java`](tute16.java) | Geometry & Input | Calculating area and perimeter of rectangle with interactive inputs. |
-| [`tute18a.java`](tute18a.java) | Conditional Decision Making | Maximum of 2 numbers using standard `if-else` blocks. |
+| [`tute18a.java`](tute18a.java) | Simple Conditionals | Maximum of 2 numbers using standard `if-else` blocks. |
 | [`tute18b.java`](tute18b.java) | Nested Branching | Maximum of 3 numbers using nested conditional `if-else` hierarchy. |
-| [`tute19a.java`](tute19a.java) | Number Sign Check | Checking whether an entered number is positive or negative. |
+| [`tute19a.java`](tute19a.java) | Sign Check | Checking whether an entered number is positive or negative. |
 | [`tute19b.java`](tute19b.java) | Parity Logic | Validating even vs odd numbers using modulo arithmetic (`n % 2 == 0`). |
 | [`tute20.java`](tute20.java) | Menu Branching | Calculator performing Add, Sub, Mul, Div with `switch-case`. |
-| [`tute24.java`](tute24.java) | Continuous Menu Driven | Interactive multi-operation calculator looping with `while` and `switch`. |
+| [`tute24.java`](tute24.java) | Continuous Menu | Interactive multi-operation calculator looping with `while` and `switch`. |
 
 ---
 
@@ -185,9 +193,9 @@ A lightweight HTTP attendance server with:
 
 ### Running Core Programs
 ```bash
-# Compile and run any program (e.g. ATM Banking System)
-javac ATM.java
-java ATM
+# Compile and run any foundational module (e.g. Module 01)
+javac 01_DataTypes_And_Variables.java
+java DataTypes_And_Variables
 ```
 
 ### Running Collection Framework Modules
